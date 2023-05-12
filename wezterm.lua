@@ -1,11 +1,12 @@
-local wezterm = require 'wezterm';
+local wezterm = require 'wezterm'
+local a = wezterm.action
 
 return {
   color_scheme = "kanagawabones",
-  font = wezterm.font("SFMono Nerd Font"),
+  font = wezterm.font("JetBrainsMono Nerd Font"),
   font_size = 15,
   line_height = 1.2,
-  cell_width = 0.9,
+  -- cell_width = 0.9,
   use_fancy_tab_bar = false,
   force_reverse_video_cursor = true,
   hide_tab_bar_if_only_one_tab = true,
@@ -32,43 +33,97 @@ return {
     {
       key = "Enter",
       mods = "CMD",
-      action = wezterm.action.SplitVertical,
+      action = a.SplitVertical,
     }, {
       key = "Enter",
       mods = "CMD|SHIFT",
-      action = wezterm.action.SplitHorizontal,
+      action = a.SplitHorizontal,
     }, {
       key = "UpArrow",
       mods = "CMD",
-      action = wezterm.action.ActivatePaneDirection 'Up',
+      action = a.ActivatePaneDirection 'Up',
     }, {
       key = "DownArrow",
       mods = "CMD",
-      action = wezterm.action.ActivatePaneDirection 'Down',
+      action = a.ActivatePaneDirection 'Down',
     }, {
       key = "LeftArrow",
       mods = "CMD",
-      action = wezterm.action.ActivatePaneDirection 'Left',
+      action = a.ActivatePaneDirection 'Left',
     }, {
       key = "RightArrow",
       mods = "CMD",
-      action = wezterm.action.ActivatePaneDirection 'Right',
+      action = a.ActivatePaneDirection 'Right',
     }, {
       key = "UpArrow",
       mods = "CMD|SHIFT",
-      action = wezterm.action.AdjustPaneSize { 'Up', 1 },
+      action = a.AdjustPaneSize { 'Up', 1 },
     }, {
       key = "DownArrow",
       mods = "CMD|SHIFT",
-      action = wezterm.action.AdjustPaneSize { 'Down', 1 },
+      action = a.AdjustPaneSize { 'Down', 1 },
     }, {
       key = "LeftArrow",
       mods = "CMD|SHIFT",
-      action = wezterm.action.AdjustPaneSize { 'Left', 1 },
+      action = a.AdjustPaneSize { 'Left', 1 },
     }, {
       key = "RightArrow",
       mods = "CMD|SHIFT",
-      action = wezterm.action.AdjustPaneSize { 'Right', 1 },
-    },
+      action = a.AdjustPaneSize { 'Right', 1 },
+    }, {
+      key = "c",
+      mods = "CMD",
+      action = a.Multiple {
+        a.SendKey { key = "\"" },
+        a.SendKey { key = "+" },
+        a.SendKey { key = "y" },
+      }
+    }, {
+      key = "s",
+      mods = "CMD",
+      action = a.Multiple {
+        a.SendKey { key = "Escape" },
+        a.SendKey { key = ":" },
+        a.SendKey { key = "w" },
+        a.SendKey { key = "Enter" },
+      }
+    }, {
+      key = "a",
+      mods = "CMD",
+      action = a.Multiple {
+        a.SendKey { key = "Escape" },
+        a.SendKey { key = "g" },
+        a.SendKey { key = "g" },
+        a.SendKey { key = "V" },
+        a.SendKey { key = "G" },
+      }
+    }, {
+      key = "f",
+      mods = "CMD|SHIFT",
+      action = a.Multiple {
+        a.SendKey { key = "Escape" },
+        a.SendKey { key = ":" },
+        a.SendKey { key = "T" },
+        a.SendKey { key = "e" },
+        a.SendKey { key = "l" },
+        a.SendKey { key = "e" },
+        a.SendKey { key = "s" },
+        a.SendKey { key = "c" },
+        a.SendKey { key = "o" },
+        a.SendKey { key = "p" },
+        a.SendKey { key = "e" },
+        a.SendKey { key = " " },
+        a.SendKey { key = "l" },
+        a.SendKey { key = "i" },
+        a.SendKey { key = "v" },
+        a.SendKey { key = "e" },
+        a.SendKey { key = "_" },
+        a.SendKey { key = "g" },
+        a.SendKey { key = "r" },
+        a.SendKey { key = "e" },
+        a.SendKey { key = "p" },
+        a.SendKey { key = "Enter" },
+      }
+    }
   }
 }
