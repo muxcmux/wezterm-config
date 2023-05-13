@@ -10,6 +10,7 @@ local config = {
   use_fancy_tab_bar = false,
   force_reverse_video_cursor = true,
   hide_tab_bar_if_only_one_tab = true,
+  max_fps = 120,
   window_decorations = "RESIZE",
   colors = {
     tab_bar = {
