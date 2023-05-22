@@ -43,6 +43,10 @@ end
 
 config.keys = {
   {
+    key = "k",
+    mods = "CMD",
+    action = a.ClearScrollback 'ScrollbackAndViewport',
+  }, {
     key = "Enter",
     mods = "CMD",
     action = a.SplitVertical,
