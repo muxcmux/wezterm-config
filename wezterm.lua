@@ -103,6 +103,10 @@ config.keys = {
     key = "f",
     mods = "CMD|SHIFT",
     action = a.Multiple(map("Escape,:,T,e,l,e,s,c,o,p,e, ,l,i,v,e,_,g,r,e,p,Enter")),
+  }, {
+    key = "Backspace",
+    mods = "ALT",
+    action = a.Multiple(map("Escape,d,b,c,l")),
   }
 }
 
