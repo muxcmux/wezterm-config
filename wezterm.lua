@@ -12,6 +12,7 @@ local config = {
   hide_tab_bar_if_only_one_tab = true,
   adjust_window_size_when_changing_font_size = true,
   max_fps = 120,
+  tab_max_width = 32,
   window_decorations = "RESIZE",
   colors = {
     tab_bar = {
