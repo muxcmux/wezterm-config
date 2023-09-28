@@ -1,8 +1,38 @@
 local wezterm = require 'wezterm'
 
+-- Kanagawa with nice tab bars
+local kanagawa_custom = wezterm.color.get_builtin_schemes()["kanagawabones"]
+kanagawa_custom.tab_bar = {
+  background = "black",
+  active_tab = {
+    bg_color = "#1f1f28",
+    fg_color = "#dcd7ba",
+  },
+  inactive_tab = {
+    bg_color = "black",
+    fg_color = "79797c",
+  },
+  new_tab = {
+    bg_color = "black",
+    fg_color = "79797c",
+  },
+}
+
+-- Switch theme based on appearance
+local function colorscheme(appearance)
+  if appearance:find "Dark" then
+    return "kanagawa_custom"
+  else
+    return "Catppuccin Latte"
+  end
+end
+
 -- General config
 local config = {
-  color_scheme = "kanagawabones",
+  color_schemes = {
+    ["kanagawa_custom"] = kanagawa_custom,
+  },
+  color_scheme = colorscheme(wezterm.gui.get_appearance()),
   font = wezterm.font("SFMono Nerd Font"),
   font_size = 15,
   line_height = 1.2,
@@ -10,27 +40,10 @@ local config = {
   use_fancy_tab_bar = false,
   force_reverse_video_cursor = true,
   hide_tab_bar_if_only_one_tab = true,
-  adjust_window_size_when_changing_font_size = true,
+  adjust_window_size_when_changing_font_size = false,
   max_fps = 120,
   tab_max_width = 32,
   window_decorations = "RESIZE",
-  colors = {
-    tab_bar = {
-      background = "black",
-      active_tab = {
-        bg_color = "#1f1f28",
-        fg_color = "#dcd7ba",
-      },
-      inactive_tab = {
-        bg_color = "black",
-        fg_color = "79797c",
-      },
-      new_tab = {
-        bg_color = "black",
-        fg_color = "79797c",
-      },
-    },
-  },
 }
 
 local a = wezterm.action
