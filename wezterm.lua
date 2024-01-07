@@ -44,6 +44,7 @@ local config = {
   max_fps = 120,
   tab_max_width = 32,
   window_decorations = "RESIZE",
+  term = "wezterm",
 }
 
 local a = wezterm.action
