@@ -59,6 +59,11 @@ end
 
 config.keys = {
   {
+    key = "h",
+    mods = "CTRL",
+    action = a.ActivateCopyMode,
+  },
+  {
     key = "k",
     mods = "CMD",
     action = a.ClearScrollback 'ScrollbackAndViewport',
