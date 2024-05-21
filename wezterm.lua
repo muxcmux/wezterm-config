@@ -2,10 +2,12 @@ local wezterm = require 'wezterm'
 
 -- Kanagawa with nice tab bars
 local kanagawa_custom = wezterm.color.get_builtin_schemes()["kanagawabones"]
+kanagawa_custom.background = "#18181c"
 kanagawa_custom.tab_bar = {
   background = "black",
   active_tab = {
-    bg_color = "#1f1f28",
+    -- bg_color = "#1f1f28",
+    bg_color = "#18181c",
     fg_color = "#dcd7ba",
   },
   inactive_tab = {
@@ -29,38 +31,40 @@ end
 
 -- General config
 local config = {
+  window_padding = {
+    left = 8,
+    right = 8,
+    top = 8,
+    bottom = 8,
+  },
   color_schemes = {
     ["kanagawa_custom"] = kanagawa_custom,
   },
   color_scheme = colorscheme(wezterm.gui.get_appearance()),
-  font = wezterm.font("SFMono Nerd Font"),
+    font = wezterm.font({
+    family = "JetBrainsMono Nerd Font",
+    weight = "Light",
+    harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' },
+  }),
   font_size = 15,
-  line_height = 1.2,
-  cell_width = 0.9,
+  line_height = 1.1,
   use_fancy_tab_bar = false,
   force_reverse_video_cursor = true,
   hide_tab_bar_if_only_one_tab = true,
   adjust_window_size_when_changing_font_size = false,
   max_fps = 120,
   tab_max_width = 32,
+  enable_kitty_keyboard = true,
   window_decorations = "RESIZE",
   term = "wezterm",
 }
 
 local a = wezterm.action
 
-local function map(things)
-  local t = {}
-  for key in string.gmatch(things, '([^,]+)') do
-    table.insert(t, a.SendKey { key = key })
-  end
-  return t
-end
-
 config.keys = {
   {
     key = "h",
-    mods = "CTRL",
+    mods = "CMD",
     action = a.ActivateCopyMode,
   },
   {
@@ -110,19 +114,7 @@ config.keys = {
   }, {
     key = "c",
     mods = "CMD",
-    action = a.Multiple(map('",+,y')),
-  }, {
-    key = "s",
-    mods = "CMD",
-    action = a.Multiple(map("Escape,:,w,Enter")),
-  }, {
-    key = "a",
-    mods = "CMD",
-    action = a.Multiple(map("Escape,g,g,V,G")),
-  }, {
-    key = "f",
-    mods = "CMD|SHIFT",
-    action = a.Multiple(map("Escape,:,T,e,l,e,s,c,o,p,e, ,l,i,v,e,_,g,r,e,p,Enter")),
+    action = a.DisableDefaultAssignment,
   }, {
     key = "^",
     mods = "CTRL|SHIFT",
